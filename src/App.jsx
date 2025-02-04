@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import reactLogo from "./assets/smsPic.jpg";
 import insta from "./assets/insta.png";
-import viteLogo from "/vite.svg";
 import "./App.css";
 
 function App() {
@@ -31,7 +30,6 @@ function App() {
             }
           );
 
-          console.log(response);
           if (response) {
             setQuestion("");
             alert("Question submitted successfully");
@@ -48,25 +46,31 @@ function App() {
           setSubmitted(false); 
         }
       } else {
-        console.log("Submission canceled. Please edit your question.");
+        console.log("Submission canceled.");
       }
     }
   };
-
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      handleSubmit();
+    }
+  };
   return (
     <>
       <div>
         <a>
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
+       
       </div>
       <h1>SMS Anonymous Questions</h1>
       <input
         type="text"
-        placeholder="Type your question here"
+        placeholder="What's your question?"
         value={question}
         onChange={(e) => setQuestion(e.target.value)}
         className="big-input"
+        onKeyDown={handleKeyDown}
       />
       <div>
         <button onClick={handleSubmit} disabled={submitted}>
@@ -89,6 +93,7 @@ function App() {
         >
           <img className="logo-insta" src={insta} alt="Instagram" />
         </a>
+        
       </div>
     </>
   );

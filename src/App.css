@@ -62,7 +62,7 @@
   height: 40px;  /* Increases height */
   font-size: 18px;  /* Makes text larger */
   padding: 10px;  /* Adds space inside the input */
-  border-radius: 5px;  /* Rounds the corners */
+  border-radius: 20px;  /* Rounds the corners */
   border: 2px solid #5f585894;  /* Adds a subtle border */
   outline: none;  /* Removes default focus outline */
 }
