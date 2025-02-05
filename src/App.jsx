@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import reactLogo from "./assets/smsPic.jpg";
 import insta from "./assets/insta.png";
 import "./App.css";
+import emailjs from "@emailjs/browser";
 
 function App() {
   const [question, setQuestion] = useState("");
@@ -12,6 +13,9 @@ function App() {
       alert("Please enter a question");
       return;
     }
+    const templateParams = {
+      question: question, 
+    };
 
     if (question.trim()) {
       const confirmSubmit = window.confirm(`Do you want to submit the question: "${question}"?`);
@@ -31,14 +35,18 @@ function App() {
           );
 
           if (response) {
+            emailjs
+            .send("service_obnu2he", "template_4bhm2h7", templateParams, "80LgiH9fzBUcberZT")
+            .then((response) => {
+              console.log("Email sent successfully!", response);
+            })
+           
+        };
             setQuestion("");
             alert("Question submitted successfully");
             setTimeout(() => {
               window.location.reload();
             }, 1000);
-          } else {
-            alert("Error submitting question");
-          }
         } catch (error) {
           console.error("Error:", error);
           alert("Error submitting question");
@@ -49,6 +57,9 @@ function App() {
         console.log("Submission canceled.");
       }
     }
+    
+    
+     
   };
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
