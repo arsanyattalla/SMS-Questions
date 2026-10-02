@@ -94,6 +94,8 @@ function App() {
       </div>
 
       <p>Questions will be discussed/answered at the start of every meeting</p>
+      <p>Every Friday @ 7:30 PM</p>
+      <p>St. Antonius Church in Hayward</p>
 
       <p className="read-the-docs">Pray for the service!</p>
       <div>
